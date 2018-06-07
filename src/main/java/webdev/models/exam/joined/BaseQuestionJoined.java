@@ -1,12 +1,9 @@
 package webdev.models.exam.joined;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import webdev.models.Exam;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "JOINED_BASE_QUESTION")
@@ -17,11 +14,40 @@ public class BaseQuestionJoined {
 	private int id;
 	private int points;
 	private String title;
+	private String type;
 	private String description;
 	private String instructions;
+
+
+	@ManyToOne
+	@JsonIgnore
+	private Exam exam;
+
+
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+
+	public Exam getExam() {
+		return exam;
+	}
+
+	public void setExam(Exam exam) {
+		this.exam = exam;
+	}
+
+
 	public int getId() {
 		return id;
 	}
+
+
 	public void setId(int id) {
 		this.id = id;
 	}

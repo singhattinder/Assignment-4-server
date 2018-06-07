@@ -33,7 +33,23 @@ public class WidgetService {
 		}
 		return null;
 	}
-	
+
+
+	@PostMapping("/api/lesson/{lessonId}/widget")
+	public void saveWidgetForLesson(@PathVariable("lessonId") int lessonId, @RequestBody Widget widget) {
+		Optional<Lesson> optionalLesson = lessonRepository.findById(lessonId);
+		if(optionalLesson.isPresent()) {
+			Lesson lesson = optionalLesson.get();
+			Widget widget1 = new Widget();
+			widget1.setText(widget.getText());
+			widget1.setDescription(widget.getDescription());
+			widget1.setTitle(widget.getTitle());
+			widget1.setWidgetType(widget.getWidgetType());
+			widget1.setLesson(lesson);
+			repository.save(widget1);
+		}
+
+	}
 	@PostMapping("/api/widget/save")
 	public void saveAllWidgets(@RequestBody
 			List<Widget> widgets) {
