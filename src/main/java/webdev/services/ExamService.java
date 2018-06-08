@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import webdev.models.Assignment;
 import webdev.models.Lesson;
 import webdev.models.Widget;
-import webdev.models.exam.joined.FillInTheBlankQuestionJoined;
-import webdev.models.exam.joined.TrueOrFalseQuestionJoined;
-import webdev.models.exam.joined.BaseQuestionJoined;
+import webdev.models.exam.joined.*;
 import webdev.repositories.*;
 import webdev.models.Exam;
 
@@ -53,6 +51,34 @@ public class ExamService {
 
 		}
 	}
+	@PostMapping("/api/exam/{eId}/essay")
+	public void createEssayQuestionById(@PathVariable("eId") int eid,
+											@RequestBody EssayQuestionJoined essayQuestionJoined) {
+		Optional<Exam> optional = examRepository.findById(eid);
+		if(optional.isPresent()) {
+
+			Exam exam = optional.get();
+			BaseQuestionJoined baseQuestionJoined = (BaseQuestionJoined) essayQuestionJoined;
+			List<BaseQuestionJoined> baseQuestionJoined1 =null;
+			baseQuestionJoined1.add(baseQuestionJoined);
+			exam.setQuestions(baseQuestionJoined1);
+
+		}
+	}
+	@PostMapping("/api/exam/{eId}/choice")
+	public void createExamQuestionById(@PathVariable("eId") int eid,
+											@RequestBody MultipleChoiceQuestionJoined multipleChoiceQuestionJoined) {
+		Optional<Exam> optional = examRepository.findById(eid);
+		if(optional.isPresent()) {
+
+			Exam exam = optional.get();
+			BaseQuestionJoined baseQuestionJoined = (BaseQuestionJoined) multipleChoiceQuestionJoined;
+			List<BaseQuestionJoined> baseQuestionJoined1 =null;
+			baseQuestionJoined1.add(baseQuestionJoined);
+			exam.setQuestions(baseQuestionJoined1);
+
+		}
+	}
 
 	@PostMapping("/api/exam/{eId}/blanks")
 	public void createFillInTheBlanksQuestionById(@PathVariable("eId") int eid,
@@ -69,9 +95,9 @@ public class ExamService {
 		}
 	}
 	
-	@GetMapping("/api/exam/{examId}")
-	public List<BaseQuestionJoined> findAllQuestionsForExam(@PathVariable("examId") int examId) {
-		Optional<Exam> optionalExam = examRepository.findById(examId);
+	@GetMapping("/api/exam/{eId}")
+	public List<BaseQuestionJoined> findAllQuestionsForExam(@PathVariable("eId") int eId) {
+		Optional<Exam> optionalExam = examRepository.findById(eId);
 		if(optionalExam.isPresent()) {
 			Exam exam = optionalExam.get();
 			List<BaseQuestionJoined> questions = exam.getQuestions();

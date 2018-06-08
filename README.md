@@ -1,1 +1,1 @@
-# webdev-summer1-2018-java-server-jannunzi
+# This is server for https://github.com/singhattinder/Assignment-4-react-native
