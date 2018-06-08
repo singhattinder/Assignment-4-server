@@ -13,6 +13,7 @@ import webdev.models.exam.joined.*;
 import webdev.repositories.*;
 import webdev.models.Exam;
 import webdev.models.exam.joined.*;
+import webdev.repositories.*;
 
 @RestController
 @CrossOrigin(origins = "*")
