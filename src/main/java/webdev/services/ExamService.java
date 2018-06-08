@@ -13,11 +13,14 @@ import webdev.models.exam.joined.*;
 import webdev.repositories.*;
 import webdev.models.Exam;
 import webdev.models.exam.joined.*;
-import webdev.repositories.*;
+import webdev.repositories.TrueOrFalseQuestionRepositoryJoined;
+import webdev.repositories.BaseQuestionRepositoryJoined;
+
 
 @RestController
 @CrossOrigin(origins = "*")
 public class ExamService {
+
 	@Autowired
 	ExamRepository examRepository;
 	@Autowired
