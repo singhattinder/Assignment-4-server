@@ -12,6 +12,7 @@ import webdev.models.Widget;
 import webdev.models.exam.joined.*;
 import webdev.repositories.*;
 import webdev.models.Exam;
+import webdev.models.exam.joined.*;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -44,7 +45,7 @@ public class ExamService {
 		if(optional.isPresent()) {
 
 			Exam exam = optional.get();
-			BaseQuestionJoined baseQuestionJoined = (BaseQuestionJoined) trueOrFalseQuestionJoined;
+			BaseQuestionJoined baseQuestionJoined =  trueOrFalseQuestionJoined;
 			List<BaseQuestionJoined> baseQuestionJoined1 =null;
 			baseQuestionJoined1.add(baseQuestionJoined);
 			exam.setQuestions(baseQuestionJoined1);
@@ -58,7 +59,7 @@ public class ExamService {
 		if(optional.isPresent()) {
 
 			Exam exam = optional.get();
-			BaseQuestionJoined baseQuestionJoined = (BaseQuestionJoined) essayQuestionJoined;
+			BaseQuestionJoined baseQuestionJoined = essayQuestionJoined;
 			List<BaseQuestionJoined> baseQuestionJoined1 =null;
 			baseQuestionJoined1.add(baseQuestionJoined);
 			exam.setQuestions(baseQuestionJoined1);
@@ -72,7 +73,7 @@ public class ExamService {
 		if(optional.isPresent()) {
 
 			Exam exam = optional.get();
-			BaseQuestionJoined baseQuestionJoined = (BaseQuestionJoined) multipleChoiceQuestionJoined;
+			BaseQuestionJoined baseQuestionJoined =  multipleChoiceQuestionJoined;
 			List<BaseQuestionJoined> baseQuestionJoined1 =null;
 			baseQuestionJoined1.add(baseQuestionJoined);
 			exam.setQuestions(baseQuestionJoined1);
@@ -87,7 +88,7 @@ public class ExamService {
 		if(optional.isPresent()) {
 
 			Exam exam = optional.get();
-			BaseQuestionJoined baseQuestionJoined = (BaseQuestionJoined) fillInTheBlankQuestionJoined;
+			BaseQuestionJoined baseQuestionJoined =  fillInTheBlankQuestionJoined;
 			List<BaseQuestionJoined> baseQuestionJoined1 =null;
 			baseQuestionJoined1.add(baseQuestionJoined);
 			exam.setQuestions(baseQuestionJoined1);
