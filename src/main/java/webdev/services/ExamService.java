@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import webdev.models.exam.joined.TrueOrFalseQuestionJoined;
 import webdev.models.exam.joined.BaseQuestionJoined;
-import webdev.repositories.TrueOrFalseQuestionRepositoryJoined;
-import webdev.repositories.FillInTheBlankQuestionRepositoryJoined;
-import webdev.repositories.ExamRepository;
+import webdev.repositories.*;
 import webdev.models.Exam;
 
 @RestController
@@ -23,6 +21,10 @@ public class ExamService {
 	ExamRepository examRepository;
 	@Autowired
 	TrueOrFalseQuestionRepositoryJoined trueFalseRepository;
+	@Autowired
+	BaseQuestionRepositoryJoined baseQuestionRepositoryJoined;
+	@Autowired
+	WidgetRepository widgetRepository;
 
 
 	@GetMapping("/api/truefalse/{questionId}")
@@ -45,5 +47,14 @@ public class ExamService {
 		}
 		return null;
 	}
+
+
+	@GetMapping("/api/exam")
+	public Iterable<Exam> findAllCourses() {
+		return examRepository.findAll();
+	}
+
+
+
 
 }

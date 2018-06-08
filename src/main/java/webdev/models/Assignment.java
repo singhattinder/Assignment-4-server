@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 @Entity
 public class Assignment extends Widget {
 
+    private String title;
+    private String description;
+
     @Override
     public String getTitle() {
         return title;
@@ -15,23 +18,23 @@ public class Assignment extends Widget {
         this.title = title;
     }
 
-    public String getLink() {
-        return link;
+    @Override
+    public String getDescription() {
+        return description;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    @Override
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getEssayAnswer() {
-        return essayAnswer;
+    public int getPoints() {
+        return points;
     }
 
-    public void setEssayAnswer(String essayAnswer) {
-        this.essayAnswer = essayAnswer;
+    public void setPoints(int points) {
+        this.points = points;
     }
 
-    private String title;
-    private String link;
-    private String essayAnswer;
+    private int points ;
 }
