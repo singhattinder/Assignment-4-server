@@ -48,8 +48,9 @@ public class AssignmentService  {
             Lesson lesson = optionalLesson.get();
             List<Widget> widgets = lesson.getWidgets();
             List<Assignment> assignments=null;
+
             for(Widget w: widgets){
-                if (w.getWidgetType().equals("Exam")){
+                if (w.getWidgetType().equals("Assignment")){
                     Assignment assignment = (Assignment) w;
                     assignments.add(assignment);
 
